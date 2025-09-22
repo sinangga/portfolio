@@ -9,7 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Favicon fallback -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     html { scroll-behavior: smooth; }
@@ -37,10 +37,23 @@
   <section class="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-r from-blue-600 to-cyan-500 text-white p-6">
     <h1 class="text-4xl md:text-6xl font-bold">Muhammad Suyudi Wahyu Sinangga</h1>
     <p class="mt-4 text-lg md:text-xl">Meteorological Data Analyst | AI Evaluator</p>
-    <div class="mt-6 flex gap-4 flex-wrap justify-center">
-      <a href="mailto:yyudie@gmail.com" class="bg-white text-blue-600 px-4 py-2 rounded-lg shadow font-medium">Email</a>
-      <a href="https://linkedin.com/in/sinangga" target="_blank" class="bg-white text-blue-600 px-4 py-2 rounded-lg shadow font-medium">LinkedIn</a>
-      <a href="https://github.com/sinangga" target="_blank" class="bg-white text-blue-600 px-4 py-2 rounded-lg shadow font-medium">GitHub</a>
+    
+    <div class="mt-6 flex gap-8 flex-wrap justify-center text-lg">
+      <!-- Email -->
+      <a href="mailto:yyudie@gmail.com" class="flex items-center gap-2 hover:text-gray-200 transition">
+        <i data-lucide="mail" class="w-6 h-6"></i>
+        <span>Email</span>
+      </a>
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/sinangga" target="_blank" class="flex items-center gap-2 hover:text-gray-200 transition">
+        <i data-lucide="linkedin" class="w-6 h-6"></i>
+        <span>LinkedIn</span>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/sinangga" target="_blank" class="flex items-center gap-2 hover:text-gray-200 transition">
+        <i data-lucide="github" class="w-6 h-6"></i>
+        <span>GitHub</span>
+      </a>
     </div>
   </section>
 
@@ -208,60 +221,5 @@
 
   <!-- Init Lucide -->
   <script>lucide.createIcons();</script>
-
-  <!-- Favicon Animation -->
-  <script>
-    setTimeout(() => {
-      let favicon_video_image_counter = 0;
-      let favicon_video_icon_tag = document.querySelector("link[rel='icon']");
-      let favicon_video_images = [
-        "https://favicongenerator.s3.amazonaws.com/fdf0d6d15ddf2.png",
-        "https://favicongenerator.s3.amazonaws.com/ce42ee085b6d2.png",
-        "https://favicongenerator.s3.amazonaws.com/b969e915b7904.png",
-        "https://favicongenerator.s3.amazonaws.com/291e16bc6a543.png",
-        "https://favicongenerator.s3.amazonaws.com/2199b163dc0df.png",
-        "https://favicongenerator.s3.amazonaws.com/246adc59daff9.png",
-        "https://favicongenerator.s3.amazonaws.com/eb6c7fdd3e202.png",
-        "https://favicongenerator.s3.amazonaws.com/6ae76b4bc35ee.png"
-      ];
-
-      async function favicon_video_to_data_url(url, callback) {
-        let xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          let reader = new FileReader();
-          reader.onloadend = function () {
-            callback(reader.result);
-          };
-          reader.readAsDataURL(xhr.response);
-        };
-        xhr.open("GET", url);
-        xhr.responseType = "blob";
-        xhr.send();
-      }
-
-      let favicon_video_loaded_images = [];
-
-      favicon_video_images.map((url, idx) => {
-        favicon_video_to_data_url(url, function (dataUrl) {
-          favicon_video_loaded_images[idx] = dataUrl;
-        });
-      });
-
-      setInterval(function () {
-        if (favicon_video_loaded_images[favicon_video_image_counter]) {
-          favicon_video_icon_tag.href = favicon_video_loaded_images[
-            favicon_video_image_counter
-          ].replace("application/octet-stream", "image/png");
-        }
-        if (
-          favicon_video_image_counter ==
-          favicon_video_loaded_images.length - 1
-        )
-          favicon_video_image_counter = 0;
-        else favicon_video_image_counter++;
-      }, 120);
-    }, 2000);
-  </script>
-
 </body>
 </html>
